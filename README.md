@@ -34,7 +34,7 @@ This is the last attemp to date ! :)
 
 # What’s left to do
 
-- [ ] add score bonuses
+- [x] add score bonuses
 - [ ] add gameplay bonuses
 - [ ] add various trajectories for projectiles
 - [ ] add obesity
