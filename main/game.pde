@@ -3,12 +3,14 @@ class Game {
   final static int HEIGHT = 680;
   final static float FRAMERATE = 60;
   final static color BACKGROUND = #000000;
+  final static String PLAYER_LIFE_SPRITE = "../data/gearvie.png";
 
   ArrayList<Projectile> projectiles;
   Faust player;
   Seth boss;
   
   int lastShot;
+  PImage playerLifeSprite;
 
   Game() {
     this.projectiles = new ArrayList<Projectile>();
@@ -16,6 +18,7 @@ class Game {
     this.boss = new Seth();
     
     this.lastShot = 0;
+    this.playerLifeSprite = loadImage(PLAYER_LIFE_SPRITE);
   }
 
   void update() {
@@ -27,6 +30,8 @@ class Game {
     this.checkProjectiles();
     this.playerShots();
     this.bossShots();
+    
+    this.drawPlayerLifes();
   }
   
   void checkProjectiles() {    
@@ -61,5 +66,11 @@ class Game {
       this.projectiles.add(new Blast(this.boss.getX(), this.boss.getY(), this.player));
       this.boss.shots();
     }
+  }
+  
+  void drawPlayerLifes() {
+      for (int i = 0; i < player.getLifes(); i++) {
+        image(playerLifeSprite, 20 * i, HEIGHT - 20); 
+      }
   }
 }
