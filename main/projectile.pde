@@ -1,9 +1,14 @@
 abstract class Projectile extends Entity {
+  static final int PROJECTILE_RADIUS = 5;
+  static final color PROJECTILE_HITBOX_COLOR = #131313;
+
   Target target;
+  int swiftness;
   
-  Projectile(float x, float y, int r, PImage s, color c, Target t) {
-       super(x, y, r, s, c);
+  Projectile(float x, float y, PImage s, Target t, int sw) {
+       super(x, y, PROJECTILE_RADIUS, s, PROJECTILE_HITBOX_COLOR);
        this.target = t;
+       this.swiftness = sw;
   }
   
   Target getTarget() {
