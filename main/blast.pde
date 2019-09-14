@@ -2,7 +2,7 @@ class Blast extends Projectile {
   static final int BLAST_SWIFTNESS = 5;
   static final String BLAST_SPRITE = "../data/projecttriangle.png";
     
-  Blast(float x, float y, Target t, int sw) {
+  Blast(float x, float y, Target t) {
     super(x, y, loadImage(BLAST_SPRITE), t, BLAST_SWIFTNESS);
   }
   

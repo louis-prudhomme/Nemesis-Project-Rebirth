@@ -1,4 +1,5 @@
 Game g;
+int timer;
 
 void settings() {
   size(Game.WIDTH, Game.HEIGHT);
@@ -7,7 +8,9 @@ void settings() {
 void setup() {
   imageMode(CENTER);
   frameRate(Game.FRAMERATE);
+  
   g = new Game();
+  timer = 0;
 }
 
 void draw() {

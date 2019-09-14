@@ -1,7 +1,8 @@
-class Game {
+class Game {  
   final static int WIDTH = 480;
   final static int HEIGHT = 680;
   final static float FRAMERATE = 60;
+  final static float BONUS_SPAWN_INTERVAL = 5 * FRAMERATE;
   final static color BACKGROUND = #000000;
   final static String PLAYER_LIFE_SPRITE = "../data/gearvie.png";
   final static int PLAYER_LIFE_INITIAL_SPACING = 20;
@@ -14,6 +15,7 @@ class Game {
   
   int lastShot;
   PImage playerLifeSprite;
+  int time;
 
   Game() {
     this.projectiles = new ArrayList<Projectile>();
@@ -22,9 +24,12 @@ class Game {
     
     this.lastShot = 0;
     this.playerLifeSprite = loadImage(PLAYER_LIFE_SPRITE);
+    this.time = 0;
   }
 
   void update() {
+    time++;
+    
     this.player.update();
     this.player.sketch();
     this.boss.update();
@@ -33,9 +38,11 @@ class Game {
     this.checkProjectiles();
     this.playerShots();
     this.bossShots();
+    this.createBonus();
     
     this.drawPlayerLifes();
     this.drawBossLifes();
+    
   }
   
   void checkProjectiles() {    
@@ -83,6 +90,12 @@ class Game {
     fill(#ff0000);
     for (int i = 0; i < boss.getLifes(); i++) {
       rect(Game.WIDTH - barLenght * (i + 1), 0, barLenght, BOSS_LIFE_HEIGHT);
+    }
+  }
+  
+  void createBonus() {
+    if(this.time % BONUS_SPAWN_INTERVAL == 0) {
+      this.projectiles.add(new Bonus(random(WIDTH), random(-500, 0), this.player));
     }
   }
 }

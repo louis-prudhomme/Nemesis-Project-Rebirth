@@ -3,13 +3,15 @@ public abstract class Entity {
   int radius;
   PImage sprite;
   color hitboxColor;
+  float swiftness;
   
-  Entity(float x, float y, int r, PImage s, color hbColor){
-    xpos = x;
-    ypos = y;
-    radius = r;
-    sprite = s;
-    hitboxColor = hbColor;
+  Entity(float x, float y, int r, PImage s, color hbColor, float sw){
+    this.xpos = x;
+    this.ypos = y;
+    this.radius = r;
+    this.sprite = s;
+    this.hitboxColor = hbColor;
+    this.swiftness = sw;
   }
   
   boolean isCollidingWith(Entity e){

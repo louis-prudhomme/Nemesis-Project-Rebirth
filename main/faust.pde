@@ -7,12 +7,12 @@ public class Faust extends Target {
   static final color FAUST_HITBOX_COLOR = #ffffff;
   static final int FAUST_LIFES = 3;
   final static float FAUST_SHOT_INTERVAL = Game.FRAMERATE * 1.5;
-  
-  float swiftness;
+  int food;
   
   Faust() {
-    super(FAUST_STARTING_X, FAUST_STARTING_Y, FAUST_RADIUS_NORMAL, loadImage(FAUST_SPRITE_NORMAL), FAUST_HITBOX_COLOR, FAUST_LIFES, FAUST_SHOT_INTERVAL);
-    swiftness = FAUST_SWIFTNESS;
+    super(FAUST_STARTING_X, FAUST_STARTING_Y, FAUST_RADIUS_NORMAL, loadImage(FAUST_SPRITE_NORMAL), 
+      FAUST_HITBOX_COLOR, FAUST_LIFES, FAUST_SHOT_INTERVAL, FAUST_SWIFTNESS);
+    this.food = 0;
   }
   
   void update() {
@@ -24,4 +24,7 @@ public class Faust extends Target {
     this.xpos += abs(distX) > this.swiftness ? Helper.getSign(distX) * this.swiftness : distX;
     this.ypos += abs(distY) > this.swiftness ? Helper.getSign(distY) * this.swiftness : distY;
   }
+  
+  void eatFood() {this.food++;}
+  int getFoodEaten(){return this.food;}
 }

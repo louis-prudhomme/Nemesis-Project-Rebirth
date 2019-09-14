@@ -3,8 +3,8 @@ abstract class Target extends Entity {
   int lastShot;
   float shotInterval;
   
-  Target(float x, float y, int r, PImage s, color c, int l, float i) {
-    super(x, y, r, s, c);
+  Target(float x, float y, int r, PImage s, color c, int l, float i, float sw) {
+    super(x, y, r, s, c, sw);
     
     this.lifes = l;
     this.lastShot = 0;

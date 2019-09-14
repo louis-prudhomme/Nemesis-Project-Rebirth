@@ -8,13 +8,12 @@ class Seth extends Target {
   static final color SETH_HITBOX_COLOR = #ffffff;
   static final int SETH_LIVES = 5;
   final static float SETH_SHOT_INTERVAL = Game.FRAMERATE * 1;
-  
-  float swiftness;
+
   int lives;
   
   Seth() {
-    super(SETH_STARTING_X, SETH_STARTING_Y, SETH_RADIUS, loadImage(SETH_SPRITE), SETH_HITBOX_COLOR, SETH_LIVES, SETH_SHOT_INTERVAL);
-    this.swiftness = SETH_SWIFTNESS;
+    super(SETH_STARTING_X, SETH_STARTING_Y, SETH_RADIUS, loadImage(SETH_SPRITE), SETH_HITBOX_COLOR, 
+      SETH_LIVES, SETH_SHOT_INTERVAL, SETH_SWIFTNESS);
     this.lives = SETH_LIVES;
   }
   

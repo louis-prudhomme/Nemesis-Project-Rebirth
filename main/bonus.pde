@@ -7,10 +7,10 @@ class Bonus extends Projectile {
   }
   
   void update() {
-    
+    this.ypos += this.swiftness;
   }
   
   void hit() {
-    
+    ((Faust)this.target).eatFood();
   }
 }
