@@ -4,6 +4,9 @@ class Game {
   final static float FRAMERATE = 60;
   final static color BACKGROUND = #000000;
   final static String PLAYER_LIFE_SPRITE = "../data/gearvie.png";
+  final static int PLAYER_LIFE_INITIAL_SPACING = 20;
+  final static int PLAYER_LIFE_ADDITIONAL_SPACING = 30;
+  final static int BOSS_LIFE_HEIGHT = 20;
 
   ArrayList<Projectile> projectiles;
   Faust player;
@@ -32,6 +35,7 @@ class Game {
     this.bossShots();
     
     this.drawPlayerLifes();
+    this.drawBossLifes();
   }
   
   void checkProjectiles() {    
@@ -69,8 +73,16 @@ class Game {
   }
   
   void drawPlayerLifes() {
-      for (int i = 0; i < player.getLifes(); i++) {
-        image(playerLifeSprite, 20 * i, HEIGHT - 20); 
-      }
+    for (int i = 0; i < player.getLifes(); i++) {
+      image(playerLifeSprite, PLAYER_LIFE_ADDITIONAL_SPACING * i + PLAYER_LIFE_INITIAL_SPACING, Game.HEIGHT - PLAYER_LIFE_INITIAL_SPACING); 
+    }
+  }
+  
+  void drawBossLifes() {
+    float barLenght = Game.WIDTH / Seth.SETH_LIVES;
+    fill(#ff0000);
+    for (int i = 0; i < boss.getLifes(); i++) {
+      rect(Game.WIDTH - barLenght * (i + 1), 0, barLenght, BOSS_LIFE_HEIGHT);
+    }
   }
 }
