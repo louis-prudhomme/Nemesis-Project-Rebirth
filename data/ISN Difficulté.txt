@@ -1,0 +1,78 @@
+// Si changement d'image du bouton :  
+if (mouseX >= débutImage && mouseX <= débutImage + tailleImage && mouseY >= débutImage && mouseY <= débutImage + tailleImage) {
+
+
+//Difficulté normal : 
+if (mousePressed == true) {
+	if (mouseX >= débutImage && mouseX <= débutImage + tailleImage && mouseY >= débutImage && mouseY <= débutImage + tailleImage) {
+		nombreDeVie = 5;
+		difficulté = 1;
+	}
+}
+
+
+//Difficulté difficile :
+if (mousePressed == true) {
+	if (mouseX >= débutImage && mouseX <= débutImage + tailleImage && mouseY >= débutImage && mouseY <= débutImage + tailleImage) {
+		nombreDeVie = 3;
+		difficulté = 2;
+	}
+}
+
+//Difficulté apocaliptique : 
+if (mousePressed == true) {
+	if (mouseX >= débutImage && mouseX <= débutImage + tailleImage && mouseY >= débutImage && mouseY <= débutImage + tailleImage) {
+		nombreDeVie = 1;
+		difficulté = 3;
+	}
+}
+
+
+
+//Fonction menu difficulté : 
+
+Flemme de le faire ATM
+
+
+
+
+//Fonction draw : 
+
+
+void draw () {
+  if (affichageMenu && etatMort==false) {
+    menu();
+  } 
+  else { 
+    if (affichageMenu==true && etatMort==true) {
+      menuRecommencer() ;
+    }
+    if (affichageDifficulté == true) 
+	menuDifficulte() ; 
+
+    else {
+      noCursor(); 
+      background(150);
+      tempsJeu = temps(tempsJeu);
+      initialisation();
+      obesite(positionJoueur);
+      invulnerabilite(positionJoueur, tirs);
+      ralenti(tirs, bonus, item);
+      dessinerItem(item);
+      dessinerTirs(tirs);
+      dessinerBonus(bonus);
+      rebonds(tirs);
+      detectionCollisions(tirs, positionJoueur);
+      detectionGraze(tirs, positionJoueur);
+      ramassageBonus(bonus, positionJoueur);
+      ramassageItem(item, positionJoueur);
+      reapparition(positionJoueur, tirs);
+      arret(positionJoueur, tirs, item, bonus);
+      emplacementJoueur(positionJoueur);
+      dessineAura(positionJoueur);
+      affichageVies(nombreDeVies);
+      calculScore();
+      affichageScore();
+    }
+  }
+}
