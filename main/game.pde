@@ -96,6 +96,7 @@ class Game {
   void createBonus() {
     if(this.time % BONUS_SPAWN_INTERVAL == 0) {
       this.projectiles.add(new Bonus(random(WIDTH), random(-500, 0), this.player));
+      this.projectiles.add(new Item(random(WIDTH), random(-500, 0), this.player));
     }
   }
 }

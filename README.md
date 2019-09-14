@@ -36,6 +36,10 @@ This is the last attemp to date ! :)
 
 - [x] add score bonuses
 - [ ] add gameplay bonuses
+  - [ ] shield
+  - [ ] bomb
+  - [ ] bullet-time
+  - [x] life up
 - [ ] add various trajectories for projectiles
 - [ ] add obesity
 - [ ] add difficulty

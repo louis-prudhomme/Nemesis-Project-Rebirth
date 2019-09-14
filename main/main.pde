@@ -8,6 +8,7 @@ void settings() {
 void setup() {
   imageMode(CENTER);
   frameRate(Game.FRAMERATE);
+  noCursor();
   
   g = new Game();
   timer = 0;

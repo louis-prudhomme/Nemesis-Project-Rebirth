@@ -27,4 +27,6 @@ public class Faust extends Target {
   
   void eatFood() {this.food++;}
   int getFoodEaten(){return this.food;}
+  
+  void gotLife() {this.lifes++;}
 }
