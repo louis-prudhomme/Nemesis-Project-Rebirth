@@ -1,4 +1,4 @@
-class Seth extends Target {
+class Seth extends Target implements IFoe {
   static final float SETH_STARTING_X = Parameters.WIDTH / 2;
   static final float SETH_STARTING_Y = 0;
   static final float SETH_ENDING_Y = Parameters.HEIGHT / 10;
@@ -6,15 +6,12 @@ class Seth extends Target {
   static final float SETH_SWIFTNESS = 0.25;
   static final String SETH_SPRITE = "../data/spritesethailes.png";
   static final color SETH_HITBOX_COLOR = #ffffff;
-  static final int SETH_LIVES = 5;
+  static final int SETH_LIFES = 5;
   final static float SETH_SHOT_INTERVAL = Parameters.FRAMERATE * 1;
-
-  int lives;
   
   Seth() {
     super(SETH_STARTING_X, SETH_STARTING_Y, SETH_RADIUS, loadImage(SETH_SPRITE), SETH_HITBOX_COLOR, 
-      SETH_LIVES, SETH_SHOT_INTERVAL, SETH_SWIFTNESS);
-    this.lives = SETH_LIVES;
+      SETH_LIFES, SETH_SHOT_INTERVAL, SETH_SWIFTNESS);
   }
   
   void update() {

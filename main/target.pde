@@ -10,7 +10,6 @@ abstract class Target extends Entity {
     this.lastShot = 0;
     this.shotInterval = i;
   }
-  
   int getLifes() {return this.lifes;}
   void gotHit() {this.lifes--;}
   

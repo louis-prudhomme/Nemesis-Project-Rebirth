@@ -2,7 +2,7 @@ static class Parameters {
   final static int WIDTH = 480;
   final static int HEIGHT = 680;
   final static float FRAMERATE = 60;
-  final static float BONUS_SPAWN_INTERVAL = 5 * FRAMERATE;
+  final static float BONUS_SPAWN_INTERVAL = 1 * FRAMERATE;
   final static color BACKGROUND = #000000;
   final static String PLAYER_LIFE_SPRITE = "../data/gearvie.png";
   final static int PLAYER_LIFE_INITIAL_SPACING = 20;
@@ -15,11 +15,13 @@ static class Parameters {
   static float GAME_SPEED;
   static float TIMER;
   static float BULLET_TIME_TIMER;
+  static boolean JUST_GOT_SHIELD;
   
   static void initialize() {
     GAME_SPEED = STANDARD_SPEED;
     TIMER = 0;
     BULLET_TIME_TIMER = 0;
+    JUST_GOT_SHIELD = false;
   }
   
   static void update() {
@@ -34,5 +36,13 @@ static class Parameters {
   
   static void endBulletTime() {
      GAME_SPEED = STANDARD_SPEED;
+  }
+  
+  static void startShield() {
+    JUST_GOT_SHIELD = true;
+  }
+  
+  static void gaveShield() {
+    JUST_GOT_SHIELD = false;
   }
 }

@@ -4,23 +4,27 @@ class Item extends Projectile {
   
   int type;
   
-  Item(float x, float y, Faust t) {
-    super(x, y, loadImage(ITEM_SPRITE), t, ITEM_SWIFTNESS);
+  Item(float x, float y) {
+    super(x, y, loadImage(ITEM_SPRITE), Faust.class, ITEM_SWIFTNESS);
     
-    type = int(random(1, 3));
+    this.type = int(random(1, 4));
   }
   
   void update() {
     this.ypos += this.swiftness * Parameters.GAME_SPEED;
   }
   
-  void hit() {
+  void hit(Target t) {
+    text(this.type, Parameters.WIDTH / 2, Parameters.HEIGHT / 2);
     switch(this.type) {
       case ItemTypes.LIFE:
-        ((Faust)this.target).gotLife();
+        ((Faust)t).gotLife();
         break;
       case ItemTypes.BULLET:
         Parameters.startBulletTime();
+        break;
+      case ItemTypes.SHIELD:
+        Parameters.startShield();
         break;
       default:
         text("SQALALA!", Parameters.WIDTH / 2, Parameters.HEIGHT / 2);
