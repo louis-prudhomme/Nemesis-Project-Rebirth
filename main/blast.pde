@@ -7,7 +7,7 @@ class Blast extends Projectile {
   }
   
   void update() {
-    this.ypos += this.swiftness;
+    this.ypos += this.swiftness * Parameters.GAME_SPEED;
   }
   
   void hit() {

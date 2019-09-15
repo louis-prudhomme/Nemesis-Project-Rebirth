@@ -1,34 +1,24 @@
-class Game {  
-  final static int WIDTH = 480;
-  final static int HEIGHT = 680;
-  final static float FRAMERATE = 60;
-  final static float BONUS_SPAWN_INTERVAL = 5 * FRAMERATE;
-  final static color BACKGROUND = #000000;
-  final static String PLAYER_LIFE_SPRITE = "../data/gearvie.png";
-  final static int PLAYER_LIFE_INITIAL_SPACING = 20;
-  final static int PLAYER_LIFE_ADDITIONAL_SPACING = 30;
-  final static int BOSS_LIFE_HEIGHT = 20;
-
+class Engine {
   ArrayList<Projectile> projectiles;
   Faust player;
   Seth boss;
   
   int lastShot;
   PImage playerLifeSprite;
-  int time;
 
-  Game() {
+  Engine() {
     this.projectiles = new ArrayList<Projectile>();
     this.player = new Faust();
     this.boss = new Seth();
     
     this.lastShot = 0;
-    this.playerLifeSprite = loadImage(PLAYER_LIFE_SPRITE);
-    this.time = 0;
+    this.playerLifeSprite = loadImage(Parameters.PLAYER_LIFE_SPRITE);
+    
+    Parameters.initialize();
   }
 
   void update() {
-    time++;
+    Parameters.update();
     
     this.player.update();
     this.player.sketch();
@@ -39,6 +29,7 @@ class Game {
     this.playerShots();
     this.bossShots();
     this.createBonus();
+    this.handleBulletTime();
     
     this.drawPlayerLifes();
     this.drawBossLifes();
@@ -81,22 +72,28 @@ class Game {
   
   void drawPlayerLifes() {
     for (int i = 0; i < player.getLifes(); i++) {
-      image(playerLifeSprite, PLAYER_LIFE_ADDITIONAL_SPACING * i + PLAYER_LIFE_INITIAL_SPACING, Game.HEIGHT - PLAYER_LIFE_INITIAL_SPACING); 
+      image(playerLifeSprite, Parameters.PLAYER_LIFE_ADDITIONAL_SPACING * i + Parameters.PLAYER_LIFE_INITIAL_SPACING, Parameters.HEIGHT - Parameters.PLAYER_LIFE_INITIAL_SPACING); 
     }
   }
   
   void drawBossLifes() {
-    float barLenght = Game.WIDTH / Seth.SETH_LIVES;
+    float barLenght = Parameters.WIDTH / Seth.SETH_LIVES;
     fill(#ff0000);
     for (int i = 0; i < boss.getLifes(); i++) {
-      rect(Game.WIDTH - barLenght * (i + 1), 0, barLenght, BOSS_LIFE_HEIGHT);
+      rect(Parameters.WIDTH - barLenght * (i + 1), 0, barLenght, Parameters.BOSS_LIFE_HEIGHT);
     }
   }
   
   void createBonus() {
-    if(this.time % BONUS_SPAWN_INTERVAL == 0) {
-      this.projectiles.add(new Bonus(random(WIDTH), random(-500, 0), this.player));
-      this.projectiles.add(new Item(random(WIDTH), random(-500, 0), this.player));
+    if(Parameters.TIMER % Parameters.BONUS_SPAWN_INTERVAL == 0) {
+      this.projectiles.add(new Bonus(random(Parameters.WIDTH), random(-500, 0), this.player));
+      this.projectiles.add(new Item(random(Parameters.WIDTH), random(-500, 0), this.player));
+    }
+  }
+  
+  void handleBulletTime() {
+    if(Parameters.GAME_SPEED == Parameters.BULLET_TIME_SPEED && Parameters.BULLET_TIME_TIMER <= 0) {
+      Parameters.endBulletTime();
     }
   }
 }

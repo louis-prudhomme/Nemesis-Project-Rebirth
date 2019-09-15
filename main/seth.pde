@@ -1,13 +1,13 @@
 class Seth extends Target {
-  static final float SETH_STARTING_X = Game.WIDTH / 2;
+  static final float SETH_STARTING_X = Parameters.WIDTH / 2;
   static final float SETH_STARTING_Y = 0;
-  static final float SETH_ENDING_Y = Game.HEIGHT / 10;
+  static final float SETH_ENDING_Y = Parameters.HEIGHT / 10;
   static final int SETH_RADIUS = 10;
   static final float SETH_SWIFTNESS = 0.25;
   static final String SETH_SPRITE = "../data/spritesethailes.png";
   static final color SETH_HITBOX_COLOR = #ffffff;
   static final int SETH_LIVES = 5;
-  final static float SETH_SHOT_INTERVAL = Game.FRAMERATE * 1;
+  final static float SETH_SHOT_INTERVAL = Parameters.FRAMERATE * 1;
 
   int lives;
   

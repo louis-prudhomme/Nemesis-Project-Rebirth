@@ -1,20 +1,18 @@
-Game g;
-int timer;
+Engine e;
 
 void settings() {
-  size(Game.WIDTH, Game.HEIGHT);
+  size(Parameters.WIDTH, Parameters.HEIGHT);
 }
 
 void setup() {
   imageMode(CENTER);
-  frameRate(Game.FRAMERATE);
+  frameRate(Parameters.FRAMERATE);
   noCursor();
   
-  g = new Game();
-  timer = 0;
+  e = new Engine();
 }
 
 void draw() {
-  background(Game.BACKGROUND);
-  g.update();
+  background(Parameters.BACKGROUND);
+  e.update();
 }
