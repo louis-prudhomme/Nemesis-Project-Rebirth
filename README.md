@@ -45,6 +45,7 @@ This is the last attemp to date ! :)
 - [ ] add difficulty
 - [ ] add score
 - [ ] add foes
+- [ ] add manual shot
 - [ ] change bonuses so they drop at the death of foes
 - [ ] change seth so he doesn’t come right away
 - [ ] wake up
