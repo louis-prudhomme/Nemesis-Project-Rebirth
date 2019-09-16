@@ -25,12 +25,15 @@ static class Parameters {
   static float BULLET_TIME_TIMER;
   // marks the obtention of a shield
   static boolean JUST_GOT_SHIELD;
+  // marks the obtention of a bomb
+  static boolean JUST_GOT_BOMB;
   
   static void initialize() {
     GAME_SPEED = STANDARD_SPEED;
     TIMER = 0;
     BULLET_TIME_TIMER = 0;
     JUST_GOT_SHIELD = false;
+    JUST_GOT_BOMB = false;
   }
   
   static void update() {
@@ -53,5 +56,13 @@ static class Parameters {
   
   static void gaveShield() {
     JUST_GOT_SHIELD = false;
+  }
+  
+  static void startBomb() {
+    JUST_GOT_BOMB = true;
+  }
+  
+  static void explodedBomb() {
+    JUST_GOT_BOMB = false;  
   }
 }

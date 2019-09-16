@@ -42,6 +42,7 @@ class Engine {
     // picked up items
     this.handleBulletTime();
     this.handleShield();
+    this.handleBomb();
     
     // hud
     this.drawPlayerLifes();
@@ -151,6 +152,13 @@ class Engine {
          this.targets.remove(existingShield); 
        }
        this.targets.add(new Shield(this.player));
+    }
+  }
+  
+  void handleBomb() {
+    if(Parameters.JUST_GOT_BOMB) {
+        this.targets.add(new Bomb(this.player));
+        Parameters.explodedBomb();
     }
   }
 }

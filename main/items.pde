@@ -9,7 +9,7 @@ class Item extends Projectile {
   Item(float x, float y) {
     super(x, y, loadImage(ITEM_SPRITE), Faust.class, ITEM_SWIFTNESS);
     
-    this.type = int(random(1, 4));
+    this.type = int(random(0, 4));
   }
   
   void update() {
@@ -19,6 +19,9 @@ class Item extends Projectile {
   void hit(Target t) {
     // different action depending on the type
     switch(this.type) {
+      case ItemTypes.BOMB:
+        Parameters.startBomb();
+        break;
       case ItemTypes.LIFE:
         ((Faust)t).gotLife();
         break;

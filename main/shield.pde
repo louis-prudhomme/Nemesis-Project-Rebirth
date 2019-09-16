@@ -7,8 +7,7 @@ class Shield extends Target implements IPlayer {
   Faust subject;
   
   Shield(Faust f) {
-    super(f.getX(), f.getY(), SHIELD_RADIUS, null, SHIELD_COLOR, 
-      SHIELD_LIFES, 0, 0);
+    super(f.getX(), f.getY(), SHIELD_RADIUS, null, SHIELD_COLOR, SHIELD_LIFES, 0, 0);
       
     this.subject = f;
   }
