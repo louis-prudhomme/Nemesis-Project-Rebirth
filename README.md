@@ -41,7 +41,7 @@ This is the last attemp to date ! :)
   - [x] bullet-time
   - [x] life up
 - [ ] add various trajectories for projectiles
-- [ ] add obesity
+- [x] add obesity
 - [ ] add difficulty
 - [ ] add score
 - [ ] add foes
