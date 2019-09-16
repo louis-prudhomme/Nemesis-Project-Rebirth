@@ -40,7 +40,7 @@ This is the last attemp to date ! :)
   - [x] bomb
   - [x] bullet-time
   - [x] life up
-- [ ] add various trajectories for projectiles
+- [x] add various trajectories for projectiles
 - [x] add obesity
 - [ ] add difficulty
 - [ ] add score
