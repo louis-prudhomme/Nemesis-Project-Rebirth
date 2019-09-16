@@ -25,6 +25,11 @@ class Shield extends Target implements IPlayer {
     stroke(this.hitboxColor);
     
     ellipse(xpos, ypos, radius, radius);
-    strokeWeight(1);    
+    strokeWeight(1);
+    stroke(#000000);
+  }
+  
+  Projectile shoot() {
+    return null;
   }
 }

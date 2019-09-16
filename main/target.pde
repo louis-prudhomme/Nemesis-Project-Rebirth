@@ -16,9 +16,7 @@ abstract class Target extends Entity {
   
   int getLastShot() {return this.lastShot;}
   boolean canShoot() {return this.lastShot >= this.shotInterval;}
-  void shots() {
-    this.lastShot = 0; 
-  }
+  abstract Projectile shoot();
   
   // forces all derived classes to implement a way to uupdate their state
   abstract void update();

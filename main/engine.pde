@@ -96,16 +96,14 @@ class Engine {
   // controls the player’s shooting
   void playerShots() {
     if(this.player.canShoot()) {
-      this.projectiles.add(new Shot(this.player.getX(), this.player.getY()));
-      this.player.shots();
+      this.projectiles.add(this.player.shoot());
     }
   }
   
   // controls the boss’ shooting
   void bossShots() {
     if(this.boss.canShoot()) {
-      this.projectiles.add(new Blast(this.boss.getX(), this.boss.getY()));
-      this.boss.shots();
+      this.projectiles.add(this.boss.shoot());
     }
   }
 
