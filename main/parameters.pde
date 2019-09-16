@@ -3,7 +3,7 @@ static class Parameters {
   // window
   final static int WIDTH = 480;
   final static int HEIGHT = 680;
-  final static float FRAMERATE = 60;
+  final static float FRAMERATE = 10;
   final static color BACKGROUND = #000000;
   // misc
   final static float BONUS_SPAWN_INTERVAL = 1 * FRAMERATE;
