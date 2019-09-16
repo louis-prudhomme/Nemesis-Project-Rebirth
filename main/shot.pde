@@ -1,3 +1,4 @@
+// represents the player’s shots 
 class Shot extends Projectile {
   static final int SHOT_SWIFTNESS = 5;
   static final String SHOT_SPRITE = "../data/projectellipse.png";

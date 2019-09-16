@@ -1,3 +1,4 @@
+// represents the boss
 class Seth extends Target implements IFoe {
   static final float SETH_STARTING_X = Parameters.WIDTH / 2;
   static final float SETH_STARTING_Y = 0;
@@ -17,6 +18,7 @@ class Seth extends Target implements IFoe {
   void update() {
     this.lastShot++;
     
+    // if seth hasn’t reached his place on the screen
     if(this.ypos <= Seth.SETH_ENDING_Y) {
       this.ypos = this.ypos + this.swiftness;
     }

@@ -1,3 +1,4 @@
+// represents the playerr
 public class Faust extends Target implements IPlayer {
   static final float FAUST_STARTING_X = Parameters.WIDTH / 2;
   static final float FAUST_STARTING_Y = Parameters.HEIGHT - Parameters.HEIGHT / 30;
@@ -8,6 +9,7 @@ public class Faust extends Target implements IPlayer {
   static final int FAUST_LIFES = 3;
   final static float FAUST_SHOT_INTERVAL = Parameters.FRAMERATE * 1.5;
   
+  // number of food bonuses eaten
   int food;
   
   Faust() {

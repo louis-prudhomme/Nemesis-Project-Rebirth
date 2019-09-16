@@ -1,20 +1,29 @@
+// contains all of the game’s parameters
 static class Parameters {
+  // window
   final static int WIDTH = 480;
   final static int HEIGHT = 680;
   final static float FRAMERATE = 60;
-  final static float BONUS_SPAWN_INTERVAL = 1 * FRAMERATE;
   final static color BACKGROUND = #000000;
+  // misc
+  final static float BONUS_SPAWN_INTERVAL = 1 * FRAMERATE;
   final static String PLAYER_LIFE_SPRITE = "../data/gearvie.png";
+  // hud
   final static int PLAYER_LIFE_INITIAL_SPACING = 20;
   final static int PLAYER_LIFE_ADDITIONAL_SPACING = 30;
   final static int BOSS_LIFE_HEIGHT = 20;
+  // speed of the game
   final static float STANDARD_SPEED = 1;
   final static float BULLET_TIME_SPEED = 0.5;
   final static float BULLET_TIME_DURATION = FRAMERATE * 20;
   
+  // current game speed (equal to standard most of the time)
   static float GAME_SPEED;
+  // clock of the game ; runs without interruption
   static float TIMER;
+  // clock for the bullet-time effect ; decounts
   static float BULLET_TIME_TIMER;
+  // marks the obtention of a shield
   static boolean JUST_GOT_SHIELD;
   
   static void initialize() {

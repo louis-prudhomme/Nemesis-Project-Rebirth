@@ -1,3 +1,4 @@
+// attacks from the ennemies (boss…)
 class Blast extends Projectile {
   static final int BLAST_SWIFTNESS = 5;
   static final String BLAST_SPRITE = "../data/projecttriangle.png";

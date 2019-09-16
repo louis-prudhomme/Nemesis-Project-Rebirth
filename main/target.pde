@@ -1,3 +1,4 @@
+// base class for every actor of the game (player, boss)
 abstract class Target extends Entity {
   int lifes;
   int lastShot;
@@ -19,5 +20,6 @@ abstract class Target extends Entity {
     this.lastShot = 0; 
   }
   
+  // forces all derived classes to implement a way to uupdate their state
   abstract void update();
 }

@@ -1,3 +1,4 @@
+// food bonuses
 class Bonus extends Projectile {
   static final int BONUS_SWIFTNESS = 2;
   static final String SHOT_SPRITE = "../data/projectmeat.png";

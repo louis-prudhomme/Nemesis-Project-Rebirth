@@ -1,7 +1,9 @@
+// represents the items thee player can gather
 class Item extends Projectile {
   static final int ITEM_SWIFTNESS = 5;
   static final String ITEM_SPRITE = "../data/projectitem.png";
   
+  // random type of the item
   int type;
   
   Item(float x, float y) {
@@ -15,7 +17,7 @@ class Item extends Projectile {
   }
   
   void hit(Target t) {
-    text(this.type, Parameters.WIDTH / 2, Parameters.HEIGHT / 2);
+    // different action depending on the type
     switch(this.type) {
       case ItemTypes.LIFE:
         ((Faust)t).gotLife();

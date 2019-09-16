@@ -1,13 +1,17 @@
+// Main core class of the game ; handles much of the logic 
 class Engine {
+  // all the projectiles (bonuses, items, shots…)
   ArrayList<Projectile> projectiles;
+  // all the targets (player, boss, shield…)
   ArrayList<Target> targets;
   
   Faust player;
   Seth boss;
   
-  int lastShot;
+  // sprite for the player’s life diplay
   PImage playerLifeSprite;
 
+  // constructor
   Engine() {
     this.projectiles = new ArrayList<Projectile>();
     this.targets = new ArrayList<Target>();
@@ -18,7 +22,6 @@ class Engine {
     this.targets.add(this.player);
     this.targets.add(this.boss);
     
-    this.lastShot = 0;
     this.playerLifeSprite = loadImage(Parameters.PLAYER_LIFE_SPRITE);
     
     Parameters.initialize();
@@ -27,20 +30,25 @@ class Engine {
   void update() {
     Parameters.update();
     
+    // first we update the entities
     this.checkTargets();
     this.checkProjectiles();
     
+    // actions
     this.playerShots();
     this.bossShots();
     this.createBonus();
     
+    // picked up items
     this.handleBulletTime();
     this.handleShield();
     
+    // hud
     this.drawPlayerLifes();
     this.drawBossLifes();
   }
   
+  // updates and dra all the projectiles and checks if they are not colliding with a target
   void checkProjectiles() {
     ArrayList<Projectile> deadProjectiles = new ArrayList<Projectile>();
     
@@ -52,17 +60,19 @@ class Engine {
           p.destroy();
           deadProjectiles.add(p);
         } else {
-          p.sketch(); 
+          p.sketch();
         }
       }
     }
     
+    // removal of the now defuncts projectiles
     for(Projectile p : deadProjectiles) 
     {
       this.projectiles.remove(p);
     }
   }
   
+  // updates and draw all the targets
   void checkTargets() {
     ArrayList<Target> deadTargets = new ArrayList<Target>();
     
@@ -75,12 +85,14 @@ class Engine {
       }
     }
     
+    // removal of the now defuncts targets
     for(Target t : deadTargets) 
     {
       this.targets.remove(t);
     }
   }
   
+  // controls the player’s shooting
   void playerShots() {
     if(this.player.canShoot()) {
       this.projectiles.add(new Shot(this.player.getX(), this.player.getY()));
@@ -88,13 +100,14 @@ class Engine {
     }
   }
   
+  // controls the boss’ shooting
   void bossShots() {
     if(this.boss.canShoot()) {
       this.projectiles.add(new Blast(this.boss.getX(), this.boss.getY()));
       this.boss.shots();
     }
   }
-  
+
   void drawPlayerLifes() {
     for (int i = 0; i < this.player.getLifes(); i++) {
       image(this.playerLifeSprite, Parameters.PLAYER_LIFE_ADDITIONAL_SPACING * i + Parameters.PLAYER_LIFE_INITIAL_SPACING, Parameters.HEIGHT - Parameters.PLAYER_LIFE_INITIAL_SPACING); 
@@ -125,6 +138,7 @@ class Engine {
   void handleShield() {
     Shield existingShield = null;
     
+    // if the player already has a shield, we replace it with a new one
     if(Parameters.JUST_GOT_SHIELD) {
        Parameters.gaveShield();
        for(Target t : this.targets) {
