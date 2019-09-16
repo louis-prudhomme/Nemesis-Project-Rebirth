@@ -22,7 +22,7 @@ class Shot extends Projectile {
       default:
         text("SQALALA!", Parameters.WIDTH / 2, Parameters.HEIGHT / 2);
     }
-    this.ypos += dy * (this.target == IPlayer.class ? Parameters.GAME_SPEED : -Parameters.GAME_SPEED);
+    this.ypos += dy * (this.target == IPlayer.class ? Parameters.GAME_SPEED : -1);
   }
   
   void hit(Target t) {

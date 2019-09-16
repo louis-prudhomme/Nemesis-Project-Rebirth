@@ -15,7 +15,7 @@ static class Parameters {
   // speed of the game
   final static float STANDARD_SPEED = 1;
   final static float BULLET_TIME_SPEED = 0.5;
-  final static float BULLET_TIME_DURATION = FRAMERATE * 20;
+  final static float BULLET_TIME_DURATION = FRAMERATE * 5;
   
   // current game speed (equal to standard most of the time)
   static float GAME_SPEED;

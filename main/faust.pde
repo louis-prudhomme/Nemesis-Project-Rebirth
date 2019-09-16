@@ -11,7 +11,7 @@ public class Faust extends Target implements IPlayer {
   static final int FAUST_LIFES = 3;
   static final float FAUST_SHOT_INTERVAL = Parameters.FRAMERATE * 1.5;
   static final int OBESITY_CAP = 10;
-  static final float OBESITY_TIMER = Parameters.FRAMERATE * 30;
+  static final float OBESITY_TIMER = Parameters.FRAMERATE * 10;
   static final String FAUST_SHOTS_SPRITE = "../data/projectellipse.png";
   static final int FAUST_SHOTS_SWIFTNESS = 5;
   static final int FAUST_SHOTS_TYPE = ShotTypes.STRAIGHT;
