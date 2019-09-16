@@ -22,7 +22,7 @@ public abstract class Entity {
   
   // tests if the present entity collides with another
   boolean isCollidingWith(Entity e){
-     float distReal = calculateDistance(e.getX(), e.getY()) - radius - e.getRadius();
+     float distReal = calculateDistance(e.getX(), e.getY()) - radius / 2 - e.getRadius() / 2;
      if(distReal < 0) {
        return true;
      } else {
