@@ -42,8 +42,9 @@ This is the last attemp to date ! :)
   - [x] life up
 - [x] add various trajectories for projectiles
 - [x] add obesity
-- [ ] add difficulty
 - [ ] add score
+- [ ] add graze
+- [ ] add difficulty
 - [ ] add foes
 - [ ] add manual shot
 - [ ] change bonuses so they drop at the death of foes
