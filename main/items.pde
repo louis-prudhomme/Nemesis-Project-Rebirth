@@ -1,13 +1,14 @@
 // represents the items thee player can gather
 class Item extends Projectile {
   static final int ITEM_SWIFTNESS = 5;
+  static final int ITEM_GIVEN_SCORE = 50;
   static final String ITEM_SPRITE = "../data/projectitem.png";
   
   // random type of the item
   int type;
   
   Item(float x, float y) {
-    super(x, y, loadImage(ITEM_SPRITE), Faust.class, ITEM_SWIFTNESS);
+    super(x, y, loadImage(ITEM_SPRITE), Faust.class, ITEM_SWIFTNESS, ScoreType.ON_HIT, ITEM_GIVEN_SCORE);
     
     this.type = int(random(0, 4));
   }

@@ -1,10 +1,11 @@
 // attacks from the ennemies (boss…)
 class Shot extends Projectile {
+  static final int SHOT_GIVEN_SCORE = 5;
   float initialX;
   int type;
     
   Shot(float x, float y, Class t, PImage s, int sw, int ty) {
-    super(x, y, s, t, sw);
+    super(x, y, s, t, sw, ScoreType.ON_DEATH, SHOT_GIVEN_SCORE);
     this.initialX = x;
     this.type = ty;
   }

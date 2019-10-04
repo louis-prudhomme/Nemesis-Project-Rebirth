@@ -35,14 +35,14 @@ This is the last attemp to date ! :)
 # What’s left to do
 
 - [x] add score bonuses
-- [ ] add gameplay bonuses
+- [x] add gameplay bonuses
   - [x] shield
   - [x] bomb
   - [x] bullet-time
   - [x] life up
 - [x] add various trajectories for projectiles
 - [x] add obesity
-- [ ] add score
+- [x] add score
 - [ ] add graze
 - [ ] add difficulty
 - [ ] add foes

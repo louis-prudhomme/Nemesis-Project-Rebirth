@@ -6,15 +6,23 @@ abstract class Projectile extends Entity {
   // will contain one of the two interfaces, IFoe or IPlayer, to mark which target it is supposed to hit
   Class target;
   
+  int givenScore;
+  int scoreType;
+  
   // constructor
-  Projectile(float x, float y, PImage s, Class t, float sw) {
+  Projectile(float x, float y, PImage s, Class t, float sw, int st, int gs) {
        super(x, y, PROJECTILE_RADIUS, s, PROJECTILE_HITBOX_COLOR, sw);
        this.target = t;
+       this.scoreType = st;
+       this.givenScore = gs;
   }
   
   Class getTarget() {
     return this.target; 
   }
+  
+  int getScoreType(){return this.scoreType;}
+  int getGivenScore(){return this.givenScore;}
   
   // checks if a target matches the objective
   boolean isSuitableTarget(Target t) {

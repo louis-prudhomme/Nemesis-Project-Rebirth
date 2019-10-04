@@ -8,6 +8,8 @@ class Engine {
   Faust player;
   Seth boss;
   
+  int score;
+  
   // sprite for the player’s life diplay
   PImage playerLifeSprite;
 
@@ -25,6 +27,7 @@ class Engine {
     this.playerLifeSprite = loadImage(Parameters.PLAYER_LIFE_SPRITE);
     
     Parameters.initialize();
+    this.score = 0;
   }
 
   void update() {
@@ -47,6 +50,7 @@ class Engine {
     // hud
     this.drawPlayerLifes();
     this.drawBossLifes();
+    this.drawScore();
   }
   
   // updates and dra all the projectiles and checks if they are not colliding with a target
@@ -57,9 +61,17 @@ class Engine {
       p.update();
       for(Target t : this.targets) {
         if(p.isDead()) {
+          if(p.getScoreType() == ScoreType.ON_DEATH) {
+            score += p.getGivenScore();
+          }
           p.destroy();
           deadProjectiles.add(p);
         } else if(p.isSuitableTarget(t) && p.isCollidingWith(t)) {
+          if(p.getScoreType() == ScoreType.ON_HIT) {
+            score += p.getGivenScore();
+          } else if (t instanceof Bomb || t instanceof Shield) {
+            score += p.getGivenScore() * 5;
+          }
           p.hit(t);
           p.destroy();
           deadProjectiles.add(p);
@@ -122,6 +134,13 @@ class Engine {
     for (int i = 0; i < this.boss.getLifes(); i++) {
       rect(Parameters.WIDTH - barLenght * (i + 1), 0, barLenght, Parameters.BOSS_LIFE_HEIGHT);
     }
+  }
+  
+  void drawScore() {
+    textSize(18);
+    textAlign(LEFT);
+    fill(#cfe1e3);
+    text(this.score, 10, Parameters.BOSS_LIFE_HEIGHT * 2.5);  
   }
   
   void createBonus() {
