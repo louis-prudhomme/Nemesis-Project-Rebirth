@@ -22,18 +22,14 @@ public abstract class Entity {
   
   // tests if the present entity collides with another
   boolean isCollidingWith(Entity e){
-     float distReal = calculateDistance(e.getX(), e.getY()) - radius / 2 - e.getRadius() / 2;
-     if(distReal < 0) {
-       return true;
-     } else {
-       return false;
-     }
+     float distReal = calculateDistance(e) - radius / 2 - e.getRadius() / 2;
+     return distReal < 0;
   }
   
   // calculates the distance between two entities
-  float calculateDistance(float x, float y){
-     float distX = xpos - x;
-     float distY = ypos - y;
+  float calculateDistance(Entity e){
+     float distX = xpos - e.getX();
+     float distY = ypos - e.getY();
      return sqrt(pow(distX, 2) + pow(distY, 2));
   }
   
