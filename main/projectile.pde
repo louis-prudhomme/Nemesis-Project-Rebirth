@@ -21,6 +21,16 @@ abstract class Projectile extends Entity {
     return this.target.isInstance(t);
   }
   
+  //checks if the projectile is out of screen
+  boolean isDead() {
+    if(this.swiftness < 0 && this.ypos < 0) {
+      return true;
+    } else if(this.swiftness > 0 && this.ypos > Parameters.HEIGHT) {
+      return true;
+    }
+    return false;
+  }
+  
   void destroy() {
     this.xpos = -666;
     this.ypos = -666;

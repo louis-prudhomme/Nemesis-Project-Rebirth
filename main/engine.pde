@@ -56,7 +56,10 @@ class Engine {
     for (Projectile p : this.projectiles) {
       p.update();
       for(Target t : this.targets) {
-        if(p.isSuitableTarget(t) && p.isCollidingWith(t)) {
+        if(p.isDead()) {
+          p.destroy();
+          deadProjectiles.add(p);
+        } else if(p.isSuitableTarget(t) && p.isCollidingWith(t)) {
           p.hit(t);
           p.destroy();
           deadProjectiles.add(p);
