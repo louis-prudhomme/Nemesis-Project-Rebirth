@@ -5,7 +5,7 @@ class Bonus extends Projectile {
   static final String SHOT_SPRITE = "../data/projectmeat.png";
 
   Bonus(float x, float y) {
-    super(x, y, loadImage(SHOT_SPRITE), Faust.class, BONUS_SWIFTNESS, ScoreType.ON_HIT, BONUS_GIVEN_SCORE);
+    super(x, y, loadImage(SHOT_SPRITE), Faust.class, BONUS_SWIFTNESS, DeathType.HIT, BONUS_GIVEN_SCORE);
   }
   
   void update() {

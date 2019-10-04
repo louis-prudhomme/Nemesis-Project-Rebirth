@@ -8,7 +8,7 @@ class Item extends Projectile {
   int type;
   
   Item(float x, float y) {
-    super(x, y, loadImage(ITEM_SPRITE), Faust.class, ITEM_SWIFTNESS, ScoreType.ON_HIT, ITEM_GIVEN_SCORE);
+    super(x, y, loadImage(ITEM_SPRITE), Faust.class, ITEM_SWIFTNESS, DeathType.HIT, ITEM_GIVEN_SCORE);
     
     this.type = int(random(0, 4));
   }

@@ -60,18 +60,12 @@ class Engine {
     for (Projectile p : this.projectiles) {
       p.update();
       for(Target t : this.targets) {
-        if(p.isDead()) {
-          if(p.getScoreType() == ScoreType.ON_DEATH) {
-            score += p.getGivenScore();
-          }
+        if(p.isOut()) {
+          p.wasOut();
           p.destroy();
           deadProjectiles.add(p);
         } else if(p.isSuitableTarget(t) && p.isCollidingWith(t)) {
-          if(p.getScoreType() == ScoreType.ON_HIT) {
-            score += p.getGivenScore();
-          } else if (t instanceof Bomb || t instanceof Shield) {
-            score += p.getGivenScore() * 5;
-          }
+          p.wasHit();
           p.hit(t);
           p.destroy();
           deadProjectiles.add(p);
@@ -80,11 +74,19 @@ class Engine {
         }
       }
     }
-    
-    // removal of the now defuncts projectiles
+
+    this.destroyProjectiles(deadProjectiles);
+  }
+
+  void destroyProjectiles(ArrayList<Projectile> deadProjectiles) {
     for(Projectile p : deadProjectiles) 
     {
       this.projectiles.remove(p);
+      if(p.getDeathType() == DeathType.HIT && p.getScoreType() == DeathType.HIT) {
+        this.score += p.getGivenScore();
+      } else if (p.getDeathType() == DeathType.OUT && p.getScoreType() == DeathType.OUT) {
+        this.score += p.getGivenScore();
+      }
     }
   }
   

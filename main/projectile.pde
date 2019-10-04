@@ -6,8 +6,13 @@ abstract class Projectile extends Entity {
   // will contain one of the two interfaces, IFoe or IPlayer, to mark which target it is supposed to hit
   Class target;
   
+  // score given by the projectile
   int givenScore;
+  //condition to obtain this projectile score
   int scoreType;
+
+  //type of destruction of this projectile
+  int deathType;
   
   // constructor
   Projectile(float x, float y, PImage s, Class t, float sw, int st, int gs) {
@@ -23,6 +28,10 @@ abstract class Projectile extends Entity {
   
   int getScoreType(){return this.scoreType;}
   int getGivenScore(){return this.givenScore;}
+
+  void wasHit() {this.deathType = DeathType.HIT;}
+  void wasOut() {this.deathType = DeathType.OUT;}
+  int getDeathType() {return this.deathType;}
   
   // checks if a target matches the objective
   boolean isSuitableTarget(Target t) {
@@ -30,7 +39,7 @@ abstract class Projectile extends Entity {
   }
   
   //checks if the projectile is out of screen
-  boolean isDead() {
+  boolean isOut() {
     if(this.swiftness < 0 && this.ypos < 0) {
       return true;
     } else if(this.swiftness > 0 && this.ypos > Parameters.HEIGHT) {

@@ -21,16 +21,19 @@ public abstract class Entity {
   }
   
   // tests if the present entity collides with another
-  boolean isCollidingWith(Entity e){
-     float distReal = calculateDistance(e) - radius / 2 - e.getRadius() / 2;
-     return distReal < 0;
+  boolean isCollidingWith(Entity e) {
+    return this.calculateRealDistance(e) < 0;
   }
   
   // calculates the distance between two entities
   float calculateDistance(Entity e){
-     float distX = xpos - e.getX();
-     float distY = ypos - e.getY();
-     return sqrt(pow(distX, 2) + pow(distY, 2));
+    float distX = xpos - e.getX();
+    float distY = ypos - e.getY();
+    return sqrt(pow(distX, 2) + pow(distY, 2));
+  }
+
+  float calculateRealDistance(Entity e) {
+    return this.calculateDistance(e) - radius / 2 - e.getRadius() / 2;
   }
   
   // draws the entity

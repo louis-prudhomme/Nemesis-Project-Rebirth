@@ -1,13 +1,17 @@
 // attacks from the ennemies (boss…)
 class Shot extends Projectile {
   static final int SHOT_GIVEN_SCORE = 5;
+  static final int GRAZE_DISTANCE = 5;
   float initialX;
   int type;
+
+  boolean hasGrazed;
     
   Shot(float x, float y, Class t, PImage s, int sw, int ty) {
-    super(x, y, s, t, sw, ScoreType.ON_DEATH, SHOT_GIVEN_SCORE);
+    super(x, y, s, t, sw, DeathType.OUT, SHOT_GIVEN_SCORE);
     this.initialX = x;
     this.type = ty;
+    this.hasGrazed = false;
   }
   
   void update() {
@@ -24,6 +28,10 @@ class Shot extends Projectile {
         text("SQALALA!", Parameters.WIDTH / 2, Parameters.HEIGHT / 2);
     }
     this.ypos += dy * (this.target == IPlayer.class ? Parameters.GAME_SPEED : -1);
+  }
+
+  boolean isGrazingWith(Entity e) {
+    return this.calculateRealDistance(e) <= GRAZE_DISTANCE;
   }
   
   void hit(Target t) {
