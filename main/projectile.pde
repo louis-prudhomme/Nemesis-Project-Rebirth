@@ -13,6 +13,9 @@ abstract class Projectile extends Entity {
 
   //type of destruction of this projectile
   int deathType;
+
+  //target hit by the projectile
+  Target didHit;
   
   // constructor
   Projectile(float x, float y, PImage s, Class t, float sw, int st, int gs) {
@@ -20,12 +23,15 @@ abstract class Projectile extends Entity {
        this.target = t;
        this.scoreType = st;
        this.givenScore = gs;
+       this.didHit = null;
   }
   
   Class getTarget() {
     return this.target; 
   }
   
+  Target getTargetHit() {return this.didHit;}
+
   int getScoreType(){return this.scoreType;}
   int getGivenScore(){return this.givenScore;}
 
@@ -55,5 +61,7 @@ abstract class Projectile extends Entity {
   }
   
   // forces the derived classes to implement a method to call a hit on something
-  abstract void hit(Target t);
+  void hit(Target t) {
+    this.didHit = t;
+  }
 }

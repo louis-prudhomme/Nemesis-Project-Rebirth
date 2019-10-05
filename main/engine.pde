@@ -86,6 +86,8 @@ class Engine {
         this.score += p.getGivenScore();
       } else if (p.getDeathType() == DeathType.OUT && p.getScoreType() == DeathType.OUT) {
         this.score += p.getGivenScore();
+      } else if (p instanceof Shot && (p.getTargetHit() instanceof Shield || p.getTargetHit() instanceof Bomb)) {
+        score += Parameters.SCORE_WHEN_DESTROYING_SHOT;
       }
     }
   }

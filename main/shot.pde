@@ -35,6 +35,7 @@ class Shot extends Projectile {
   }
   
   void hit(Target t) {
+    super.hit(t);
     t.gotHit();
   }
   

@@ -13,6 +13,7 @@ class Bonus extends Projectile {
   }
   
   void hit(Target t) {
-    ((Faust)t).eatFood(); 
+    super.hit(t);
+    ((Faust)t).eatFood();
   }
 }

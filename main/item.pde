@@ -18,6 +18,7 @@ class Item extends Projectile {
   }
   
   void hit(Target t) {
+    super.hit(t);
     // different action depending on the type
     switch(this.type) {
       case ItemTypes.BOMB:
