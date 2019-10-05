@@ -40,7 +40,7 @@ class Engine {
     // actions
     this.playerShots();
     this.bossShots();
-    this.createBonus();
+    // this.createBonus();
     
     // picked up items
     this.handleBulletTime();
@@ -70,6 +70,9 @@ class Engine {
           p.destroy();
           deadProjectiles.add(p);
         } else {
+          if(p instanceof Shot && t instanceof Faust && ((Shot)p).isGrazingWith(t)) {
+            ((Shot)p).justGrazed();
+          }
           p.sketch();
         }
       }
@@ -85,7 +88,11 @@ class Engine {
       if(p.getDeathType() == DeathType.HIT && p.getScoreType() == DeathType.HIT) {
         this.score += p.getGivenScore();
       } else if (p.getDeathType() == DeathType.OUT && p.getScoreType() == DeathType.OUT) {
-        this.score += p.getGivenScore();
+        if(p instanceof Shot && ((Shot)p).hasGrazed()) {
+          this.score += p.getGivenScore() * 2;
+        } else {
+          this.score += p.getGivenScore();
+        }
       } else if (p instanceof Shot && (p.getTargetHit() instanceof Shield || p.getTargetHit() instanceof Bomb)) {
         score += Parameters.SCORE_WHEN_DESTROYING_SHOT;
       }

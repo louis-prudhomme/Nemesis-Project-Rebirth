@@ -7,6 +7,7 @@ static class Parameters {
   final static color BACKGROUND = #000000;
   // misc
   final static int SCORE_WHEN_DESTROYING_SHOT = 50;
+  final static int SCORE_WHEN_GRAZING = 50;
   final static float BONUS_SPAWN_INTERVAL = 1 * FRAMERATE;
   final static String PLAYER_LIFE_SPRITE = "../data/gearvie.png";
   // hud

@@ -43,7 +43,7 @@ This is the last attemp to date ! :)
 - [x] add various trajectories for projectiles
 - [x] add obesity
 - [x] add score
-- [ ] add graze
+- [x] add graze
 - [ ] add difficulty
 - [ ] add foes
 - [ ] add manual shot

@@ -39,6 +39,8 @@ class Shot extends Projectile {
     t.gotHit();
   }
   
+  void justGrazed() {this.hasGrazed = true;}
+  boolean hasGrazed() {return this.hasGrazed;}
   
   // draws the entity
   void sketch() {
