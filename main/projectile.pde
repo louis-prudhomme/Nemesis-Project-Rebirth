@@ -16,14 +16,14 @@ abstract class Projectile extends Entity {
 
   //target hit by the projectile
   Target didHit;
-  
+
   // constructor
-  Projectile(float x, float y, PImage s, Class t, float sw, int st, int gs) {
-       super(x, y, PROJECTILE_RADIUS, s, PROJECTILE_HITBOX_COLOR, sw);
-       this.target = t;
-       this.scoreType = st;
-       this.givenScore = gs;
-       this.didHit = null;
+  Projectile(float x, float y, PImage s, Class t, float sw, int st, int gs){
+    super(x, y, PROJECTILE_RADIUS, s, PROJECTILE_HITBOX_COLOR, sw);
+    this.target = t;
+    this.scoreType = st;
+    this.givenScore = gs;
+    this.didHit = null;
   }
   
   Class getTarget() {

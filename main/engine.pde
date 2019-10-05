@@ -40,8 +40,8 @@ class Engine {
     // actions
     this.playerShots();
     this.bossShots();
-    // this.createBonus();
-    
+    this.createBonus();
+
     // picked up items
     this.handleBulletTime();
     this.handleShield();

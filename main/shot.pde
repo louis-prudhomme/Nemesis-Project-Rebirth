@@ -1,5 +1,6 @@
 // attacks from the ennemies (boss…)
 class Shot extends Projectile {
+  static final int SHOT_COLOR_WHEN_GRAZED = #006442;
   static final int SHOT_GIVEN_SCORE = 5;
   static final int GRAZE_DISTANCE = 5;
   float initialX;
@@ -22,7 +23,7 @@ class Shot extends Projectile {
         break;
       case ShotTypes.WAVVY:
         dy = this.swiftness;
-        this.xpos = this.initialX + cos(ypos * 5) * 20;
+        this.xpos = this.initialX + cos(this.ypos * 5) * 20;
         break;
       default:
         text("SQALALA!", Parameters.WIDTH / 2, Parameters.HEIGHT / 2);
@@ -41,11 +42,11 @@ class Shot extends Projectile {
   
   void justGrazed() {this.hasGrazed = true;}
   boolean hasGrazed() {return this.hasGrazed;}
-  
+   
   // draws the entity
   void sketch() {
     image(sprite, xpos, ypos);
-    fill(hitboxColor);
+    fill(this.hasGrazed ? SHOT_COLOR_WHEN_GRAZED : PROJECTILE_HITBOX_COLOR);
     ellipse(xpos, ypos, radius, radius);
   }
 }
