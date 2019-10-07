@@ -21,9 +21,17 @@ class Shot extends Projectile {
       case ShotTypes.STRAIGHT:
         dy = this.swiftness;
         break;
-      case ShotTypes.WAVVY:
+      case ShotTypes.WAVY:
         dy = this.swiftness;
         this.xpos = this.initialX + cos(this.ypos * 5) * 20;
+        break;
+      case ShotTypes.CURVY:
+        dy = this.swiftness;
+        this.xpos = pow((this.ypos - height / 2) / 2, 2) / 100;
+        break;
+      case ShotTypes.ANTICURVY:
+        dy = this.swiftness;
+        this.xpos = -pow((this.ypos - height / 2) / 2, 2) / 100 + width;
         break;
       default:
         text("SQALALA!", Parameters.WIDTH / 2, Parameters.HEIGHT / 2);
