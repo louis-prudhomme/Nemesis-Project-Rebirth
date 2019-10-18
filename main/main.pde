@@ -1,4 +1,6 @@
-Engine e;
+import java.util.Map;
+
+Game game;
 
 void settings() {
   size(Parameters.WIDTH, Parameters.HEIGHT);
@@ -9,10 +11,12 @@ void setup() {
   frameRate(Parameters.FRAMERATE);
   noCursor();
   
-  e = new Engine();
+  HashMap<Integer, Class<? extends IPanel>> panels = new HashMap<Integer, Class<? extends IPanel>>();
+  panels.put(GameState.PLAYING, Engine.class);
+  game = new Game(this, panels);
 }
 
 void draw() {
   background(Parameters.BACKGROUND);
-  e.update();
+  game.display();
 }

@@ -1,5 +1,5 @@
 // Main core class of the game ; handles much of the logic 
-class Engine {
+class Engine implements IPanel {
   // all the projectiles (bonuses, items, shots…)
   ArrayList<Projectile> projectiles;
   // all the targets (player, boss, shield…)
@@ -14,7 +14,7 @@ class Engine {
   PImage playerLifeSprite;
 
   // constructor
-  Engine() {
+  public Engine() {
     this.projectiles = new ArrayList<Projectile>();
     this.targets = new ArrayList<Target>();
     
@@ -30,7 +30,7 @@ class Engine {
     this.score = 0;
   }
 
-  void update() {
+  int display() {
     Parameters.update();
     
     // first we update the entities
@@ -51,6 +51,8 @@ class Engine {
     this.drawPlayerLifes();
     this.drawBossLifes();
     this.drawScore();
+
+    return GameState.PLAYING;
   }
   
   // updates and dra all the projectiles and checks if they are not colliding with a target
