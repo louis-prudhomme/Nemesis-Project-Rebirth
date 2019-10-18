@@ -14,17 +14,17 @@ class Game {
         this.desiredPanels = d;
         this.panels = new HashMap<Integer, IPanel>();
 
-        this.initializePanels(m, desiredPanels);
+        this.initializePanels();
     }
 
     public void display() {
         this.currentState = panels.get(currentState).display();
     }
 
-    private void initializePanels(main m, HashMap<Integer, Class<? extends IPanel>> desiredPanels) {
-        for (Integer state : desiredPanels.keySet()) {
+    private void initializePanels() {
+        for (Integer state : this.desiredPanels.keySet()) {
             try {
-                this.panels.put(state, desiredPanels.get(state).getConstructor(this.mein.getClass()).newInstance(mein));
+                this.panels.put(state, this.desiredPanels.get(state).getConstructor(this.mein.getClass()).newInstance(this.mein));
             } catch (Exception e) {
                 println("SQLALALA");
             }
